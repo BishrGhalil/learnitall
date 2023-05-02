@@ -3,7 +3,7 @@ a minimal e-learning platform written in python/django.
 
 #### Features
 - Generic content support for Text, HTML, Files, Images, Videos and other types can be added easily.
-- Caching support using [memcache](https://memcached.org/) and [pipenv](https://pipenv.pypa.io/en/latest/)
+- Caching support using [memcache](https://memcached.org/)
 - CMS for Instructors to easily CRUD their courses and contents.
 - Minimal nice UI.
 
