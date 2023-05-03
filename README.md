@@ -6,6 +6,7 @@ a minimal e-learning platform written in python/django.
 - Caching support using [memcache](https://memcached.org/)
 - CMS for Instructors to easily CRUD their courses and contents.
 - Minimal nice UI.
+- A RESTful API to consume.
 
 ### Getting Started
 1. Install [memcache](https://memcached.org/) and [pipenv](https://pipenv.pypa.io/en/latest/)
