@@ -10,6 +10,7 @@ from django.views.generic.base import TemplateResponseMixin, View
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
+
 from students.forms import CourseEnrollForm
 
 from .forms import ModuleFormSet
@@ -168,7 +169,7 @@ class CourseListView(TemplateResponseMixin, View):
         subjects = cache.get("all_subjects")
         if not subjects:
             subjects = Subject.objects.annotate(total_courses=Count("courses"))
-            cache.set("all_subjects", subjects, 60 * 10)
+            cache.set("all_subjects", subjects, settings.CACHING_MODELS_TIMEOUT)
         all_courses = Course.objects.annotate(total_modules=Count("modules"))
 
         if subject:
@@ -177,13 +178,13 @@ class CourseListView(TemplateResponseMixin, View):
             courses = cache.get(key)
             if not courses:
                 courses = all_courses.filter(subject=subject)
-                cache.set(key, courses, 60 * 10)
+                cache.set(key, courses, settings.CACHING_MODELS_TIMEOUT)
 
         else:
             courses = cache.get("all_courses")
             if not courses:
                 courses = all_courses
-                cache.set("all_courses", courses, 60 * 10)
+                cache.set("all_courses", courses, CACHING_MODELS_TIMEOUT10)
 
         return self.render_to_response(
             {"subjects": subjects, "subject": subject, "courses": courses}

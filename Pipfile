@@ -11,6 +11,7 @@ django-embed-video = "*"
 python-memcached = "*"
 django-memcache-status = "*"
 pylibmc = "*"
+djangorestframework = "*"
 
 [dev-packages]
 
